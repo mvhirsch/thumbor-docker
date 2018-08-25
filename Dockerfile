@@ -1,15 +1,59 @@
-FROM apsl/thumbor:6.4.2
+FROM python:2
+MAINTAINER Michael Hirschler <michael.vhirsch@gmail.com>
 
-ENV HOME /usr/src/app
+# base OS packages
+RUN  \
+    awk '$1 ~ "^deb" { $3 = $3 "-backports"; print; exit }' /etc/apt/sources.list > /etc/apt/sources.list.d/backports.list && \
+    apt-get update && \
+    apt-get -y upgrade && \
+    apt-get -y autoremove && \
+    apt-get install -y -q \
+        python-numpy \
+        python-opencv \
+        git \
+        curl \
+        libdc1394-22 \
+        libjpeg-turbo-progs \
+        graphicsmagick \
+        libgraphicsmagick++3 \
+        libgraphicsmagick++1-dev \
+        libgraphicsmagick-q16-3 \
+        zlib1g-dev \
+        libboost-python-dev \
+        libmemcached-dev \
+        gifsicle=1.88* \
+        ffmpeg && \
+    apt-get clean
+
+ENV HOME /app
 ENV SHELL bash
-ENV WORKON_HOME /usr/src/app
-WORKDIR /usr/src/app
-RUN apt-get install -y --no-install-recommends pngquant
-WORKDIR /usr/src/app
-RUN pip install --use-wheel --trusted-host None --no-cache-dir thumbor-plugins
-RUN echo "PNGQUANT_PATH = '/usr/bin/pngquant'" >> /usr/src/app/thumbor.conf.tpl
-RUN echo "PNGQUANT_SPEED = 1" >> /usr/src/app/thumbor.conf.tpl
-ENV OPTIMIZERS="['thumbor_plugins.optimizers.pngquant']"
-ENV DETECTORS="['thumbor.detectors.face_detector']"
-#ENV OPTIMIZERS="['thumbor.optimizers.jpegtran']"
+ENV WORKON_HOME /app
+WORKDIR /app
 
+COPY requirements.txt /app/requirements.txt
+RUN pip install --trusted-host None --no-cache-dir \
+   -r /app/requirements.txt
+
+COPY conf/thumbor.conf.tpl /app/thumbor.conf.tpl
+
+ADD conf/circus.ini.tpl /etc/
+RUN mkdir  /etc/circus.d /etc/setup.d
+ADD conf/thumbor-circus.ini.tpl /etc/circus.d/
+
+RUN \
+    ln /usr/lib/python2.7/dist-packages/cv2.x86_64-linux-gnu.so /usr/local/lib/python2.7/cv2.so && \
+    ln /usr/lib/python2.7/dist-packages/cv.py /usr/local/lib/python2.7/cv.py
+
+ARG SIMD_LEVEL
+# pinning to 5.1.1 see https://github.com/uploadcare/pillow-simd/issues/17
+RUN if [ -n "$SIMD_LEVEL" ]; then apt-get install -y -q libjpeg-dev zlib1g-dev; fi
+RUN if [ -n "$SIMD_LEVEL" ]; then pip uninstall -y pillow; CC="cc -m$SIMD_LEVEL" LDFLAGS=-L/usr/lib/x86_64-linux-gnu/ pip install --no-cache-dir -U --force-reinstall Pillow-SIMD==5.1.1.post0; fi
+
+COPY docker-entrypoint.sh /
+ENTRYPOINT ["/docker-entrypoint.sh"]
+
+# running thumbor multiprocess via circus by default
+# to override and run thumbor solo, set THUMBOR_NUM_PROCESSES=1 or unset it
+CMD ["circus"]
+
+EXPOSE 80 8888
