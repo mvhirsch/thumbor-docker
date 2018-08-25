@@ -1,13 +1,14 @@
-FROM python:2
+FROM python:2-slim
 MAINTAINER Michael Hirschler <michael.vhirsch@gmail.com>
 
 # base OS packages
 RUN  \
     awk '$1 ~ "^deb" { $3 = $3 "-backports"; print; exit }' /etc/apt/sources.list > /etc/apt/sources.list.d/backports.list && \
     apt-get update && \
-    apt-get -y upgrade && \
-    apt-get -y autoremove && \
-    apt-get install -y -q \
+    apt-get install -y -q --no-install-recommends \
+        gcc \
+        build-essential \
+        libgnutls28-dev \
         python-numpy \
         python-opencv \
         git \
@@ -21,9 +22,10 @@ RUN  \
         zlib1g-dev \
         libboost-python-dev \
         libmemcached-dev \
+        libcurl4-gnutls-dev \
         gifsicle=1.88* \
         ffmpeg && \
-    apt-get clean
+    rm -rf /var/lib/apt/lists/*
 
 ENV HOME /app
 ENV SHELL bash
