@@ -3,7 +3,7 @@ MAINTAINER Michael Hirschler <michael.vhirsch@gmail.com>
 
 RUN apt-get update && \
     apt-get install -y -q --no-install-recommends \
-        gcc build-essential \
+        gcc \
         imagemagick webp coreutils gifsicle libvpx? \
         libvpx-dev libimage-exiftool-perl libcairo2-dev \
         ffmpeg libffi-dev \
