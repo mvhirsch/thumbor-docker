@@ -14,6 +14,16 @@ if [ -z ${THUMBOR_PORT+x} ]; then
     THUMBOR_PORT=8888
 fi
 
+
+for f in /docker-entrypoint.init.d/*; do
+			case "$f" in
+				*.sh) # this should match the set of files we check for below
+                    . $f
+					break
+					;;
+			esac
+done
+
 if [ "$1" = 'thumbor' ]; then
     exec python -m thumbor/server --port=$THUMBOR_PORT --conf=/usr/local/thumbor/thumbor.conf $LOG_PARAMETER
 fi
