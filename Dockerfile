@@ -6,8 +6,8 @@ RUN apt-get update && \
         gcc build-essential \
         imagemagick webp coreutils gifsicle libvpx? \
         libvpx-dev libimage-exiftool-perl libcairo2-dev \
-        ffmpeg libcurl4-openssl-dev libffi-dev \
-        libcurl4-openssl-dev libcurl4-gnutls-dev libgnutls28-dev \
+        ffmpeg libffi-dev \
+        libcurl4-gnutls-dev libgnutls28-dev \
         python-dev python3-dev && \
     rm -rf /var/lib/apt/lists/*
 
