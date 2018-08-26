@@ -12,8 +12,11 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 RUN pip install --no-cache-dir thumbor==6.5.2 envtpl==0.6.0
-COPY conf/thumbor.conf.tpl /app/thumbor.conf.tpl
+
+COPY thumbor.conf.tpl /usr/local/etc/thumbor.conf.tpl
+COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 CMD ["thumbor"]
+ENTRYPOINT ["/docker-entrypoint.sh"]
 
 EXPOSE 8888
