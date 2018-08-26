@@ -42,10 +42,10 @@ https://github.com/mvhirsch/thumbor-docker/issues
 
 I love the word "fundamentals" in here.
 The main idea of this image, is to provide a current 
-recommended solution based on 
+recommended solution (2018) based on 
 [Google's Web Fundamentals](https://developers.google.com/web/fundamentals/).
 
-For now, this comes with `jpegoptim` (lossy) and `pngquant`
+For now, this comes with `mozjpeg` (lossy) and `pngquant`
 (lossy) to optimize images.
 
 ### `mvhirsch/thumbor-opencv:latest`
