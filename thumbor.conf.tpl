@@ -250,7 +250,7 @@ STATSD_PREFIX = {{ STATSD_PREFIX | default(None) }}
 
 ## The root path where the File Loader will try to find images
 ## Defaults to: /tmp
-FILE_LOADER_ROOT_PATH = '{{ FILE_LOADER_ROOT_PATH | default('/data/loader') }}'
+FILE_LOADER_ROOT_PATH = '{{ FILE_LOADER_ROOT_PATH | default('/urs/local/thumbor/loader') }}'
 
 ################################################################################
 
@@ -343,7 +343,7 @@ STORES_CRYPTO_KEY_FOR_EACH_IMAGE = {{ STORES_CRYPTO_KEY_FOR_EACH_IMAGE | default
 
 ## The root path where the File Storage will try to find images
 ## Defaults to: /tmp/thumbor/storage
-FILE_STORAGE_ROOT_PATH = '{{ FILE_STORAGE_ROOT_PATH | default('/data/storage') }}'
+FILE_STORAGE_ROOT_PATH = '{{ FILE_STORAGE_ROOT_PATH | default('/usr/local/thumbor/storage') }}'
 
 ################################################################################
 
@@ -552,7 +552,7 @@ RESULT_STORAGE_EXPIRATION_SECONDS = {{ RESULT_STORAGE_EXPIRATION_SECONDS | defau
 
 ## Path where the Result storage will store generated images
 ## Defaults to: /tmp/thumbor/result_storage
-RESULT_STORAGE_FILE_STORAGE_ROOT_PATH = '{{ RESULT_STORAGE_FILE_STORAGE_ROOT_PATH | default('/data/result_storage') }}'
+RESULT_STORAGE_FILE_STORAGE_ROOT_PATH = '{{ RESULT_STORAGE_FILE_STORAGE_ROOT_PATH | default('/usr/local/thumbor/result_storage') }}'
 
 ## Indicates whether unsafe requests should also be stored in the Result Storage
 ## Defaults to: False

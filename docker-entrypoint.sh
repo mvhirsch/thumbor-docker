@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ ! -f /usr/local/etc/thumbor.conf ]; then
-  envtpl /usr/local/etc/thumbor.conf.tpl  --allow-missing --keep-template
+  envtpl /usr/local/etc/thumbor.conf.tpl  --allow-missing --keep-template --output /usr/local/thumbor/thumbor.conf
 fi
 
 # If log level is defined we configure it, else use default log_level = info
@@ -15,7 +15,7 @@ if [ -z ${THUMBOR_PORT+x} ]; then
 fi
 
 if [ "$1" = 'thumbor' ]; then
-    exec python -m thumbor/server --port=$THUMBOR_PORT --conf=/usr/local/etc/thumbor.conf $LOG_PARAMETER
+    exec python -m thumbor/server --port=$THUMBOR_PORT --conf=/usr/local/thumbor/thumbor.conf $LOG_PARAMETER
 fi
 
 exec "$@"
