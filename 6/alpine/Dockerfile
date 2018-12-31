@@ -8,7 +8,10 @@ RUN apk add --no-cache --virtual .build-deps \
         libjpeg-turbo-dev \
         libffi-dev \
         libressl-dev \
+        libwebp-dev \
         python-dev \
+        tiff-dev \
+        zlib-dev \
     && apk add --no-cache \
         cairo \
         coreutils \
@@ -22,6 +25,8 @@ RUN apk add --no-cache --virtual .build-deps \
         libwebp \
         python \
         py-pip \
+        tiff \
+        zlib \
     && pip --disable-pip-version-check install thumbor envtpl tc_aws \
     && apk del .build-deps \
     && rm -rf /var/cache/apk/* \
