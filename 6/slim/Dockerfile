@@ -1,4 +1,4 @@
-FROM python:2-slim
+FROM python:3-slim
 MAINTAINER Michael Hirschler <michael.vhirsch@gmail.com>
 
 RUN groupadd --gid 1000 thumbor && \
@@ -9,13 +9,20 @@ RUN apt-get update && \
     apt-get install -y -q --no-install-recommends \
         gcc \
         imagemagick webp coreutils gifsicle libvpx? \
-        libvpx-dev libimage-exiftool-perl libcairo2-dev \
-        ffmpeg libffi-dev \
+        libvpx? libvpx-dev libimage-exiftool-perl libcairo2 libcairo2-dev \
+        ffmpeg libffi6 libffi-dev \
         libcurl4-gnutls-dev libgnutls28-dev \
-        python-dev && \
+        python python-dev && \
+    pip install --no-cache-dir thumbor==6.6.0 envtpl==0.6.0 tc_aws && \
+    apt-get remove \
+    	gcc \
+    	libcairo2-dev \
+    	libcurl4-gnutls-dev \
+    	libffi-dev \
+    	libgnutls28-dev \
+    	libvpx-dev \
+    	python-dev && \
     rm -rf /var/lib/apt/lists/*
-
-RUN pip install --no-cache-dir thumbor==6.6.0 envtpl==0.6.0
 
 COPY thumbor.conf.tpl /usr/local/etc/thumbor.conf.tpl
 COPY docker-entrypoint.sh /docker-entrypoint.sh
