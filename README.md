@@ -53,10 +53,6 @@ For now, this comes with `mozjpeg` (lossy) and `pngquant`
 Currently _not supported_. Please feel free to contribute:
 https://github.com/mvhirsch/thumbor-docker/issues
 
-## License 
-
-MIT.
-
 ## Why another Docker Image?
 
 I've create this one because I wanted a small footprint
