@@ -230,6 +230,15 @@ MAX_ID_LENGTH = {{ MAX_ID_LENGTH | default(32) }}
 ################################################################################
 
 
+################################# Healthcheck ##################################
+
+## The URL path to a healthcheck.  This will return a 200 and the text 'WORKING'.
+## Defaults to: '/healthcheck'
+HEALTHCHECK_ROUTE = '{{ HEALTHCHECK_ROUTE | default('/healthcheck') }}'
+
+################################################################################
+
+
 ################################### Metrics ####################################
 
 ## Host to send statsd instrumentation to
