@@ -34,9 +34,8 @@ The defacto image. This is build upon `python:2-slim`.
 
 ### `mvhirsch/thumbor:alpine`
 
-Still, there is not an alpine version available, but I'll
-build one in future. Please feel free to contribute: 
-https://github.com/mvhirsch/thumbor-docker/issues
+Build upon `alpine:3-8` you can now use an Alpine version of Thumbor!
+Smallest (266 MB only) up-to-date Thumbor!
 
 ### `mvhirsch/thumbor-fundamentals:slim`
 
@@ -60,7 +59,8 @@ on my images. This image adds _only_ 455 MB, instead of
 nearly 1700 MB amongst similar images out there.
 
 
-Many thanks go to: 
+Many thanks go to:
 
 - [APSL/docker-thumbor](https://github.com/APSL/docker-thumbor)
 - [MinimalCompact/docker-thumbor](https://github.com/MinimalCompact/thumbor)
+- [klausbadelt](https://github.com/klausbadelt)
