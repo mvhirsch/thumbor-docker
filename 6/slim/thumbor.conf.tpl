@@ -259,7 +259,7 @@ STATSD_PREFIX = {{ STATSD_PREFIX | default(None) }}
 
 ## The root path where the File Loader will try to find images
 ## Defaults to: /tmp
-FILE_LOADER_ROOT_PATH = '{{ FILE_LOADER_ROOT_PATH | default('/urs/local/thumbor/loader') }}'
+FILE_LOADER_ROOT_PATH = '{{ FILE_LOADER_ROOT_PATH | default('/usr/local/thumbor/loader') }}'
 
 ################################################################################
 
