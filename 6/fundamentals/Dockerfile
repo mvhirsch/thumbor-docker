@@ -33,7 +33,7 @@ RUN apt-get update && \
 COPY --from=mozjpeg /usr/local/share/mozjpeg/build /usr/local/share/mozjpeg/build
 RUN ln -s /usr/local/share/mozjpeg/build/cjpeg /usr/local/bin/mozjpeg
 
-RUN pip install --no-cache-dir thumbor-plugins
+RUN pip install --no-cache-dir thumbor-plugins tc_mongodb tc_aws
 
 ENV OPTIMIZERS="['thumbor_plugins.optimizers.pngquant', 'thumbor_plugins.optimizers.mozjpeg']"
 
