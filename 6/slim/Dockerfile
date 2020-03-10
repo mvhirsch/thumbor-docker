@@ -15,7 +15,7 @@ RUN apt-get update && \
         python-dev && \
     rm -rf /var/lib/apt/lists/*
 
-RUN pip install --no-cache-dir thumbor==6.7.3 envtpl==0.6.0
+RUN pip install --no-cache-dir thumbor==6.7.4 envtpl==0.6.0
 
 COPY thumbor.conf.tpl /usr/local/etc/thumbor.conf.tpl
 COPY docker-entrypoint.sh /docker-entrypoint.sh
