@@ -27,7 +27,7 @@ RUN apk add --no-cache --virtual .build-deps \
         py-pip \
         tiff \
         zlib \
-    && pip install --no-cache-dir thumbor==6.7.4 envtpl==0.6.0 \
+    && pip install --no-cache-dir thumbor==6.7.5 envtpl==0.6.0 \
     && apk del .build-deps \
     && rm -rf /var/cache/apk/* \
     && rm -rf /root/.cache
