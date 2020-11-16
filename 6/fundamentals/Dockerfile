@@ -2,8 +2,7 @@ FROM debian:stretch-slim as mozjpeg
 ENV VERSION 3.3.1
 
 RUN apt-get update && \
-    apt list -a ffmpeg && \
-    apt-get install -y --no-install-recommends autoconf automake checkinstall libpng-dev libtool make nasm pkg-config ffmpeg=7:3.2.15-0  && \
+    apt-get install -y --no-install-recommends autoconf automake checkinstall libpng-dev libtool make nasm pkg-config && \
     rm -rf /var/lib/apt/lists/*
 
 ADD https://github.com/mozilla/mozjpeg/archive/v$VERSION.tar.gz /usr/local/share
