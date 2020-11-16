@@ -2,7 +2,8 @@ FROM debian:stretch-slim as mozjpeg
 ENV VERSION 3.3.1
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends autoconf automake checkinstall libpng-dev libtool make nasm pkg-config && \
+    apt list -a ffmpeg && \
+    apt-get install -y --no-install-recommends autoconf automake checkinstall libpng-dev libtool make nasm pkg-config ffmpeg=7:3.2.15-0  && \
     rm -rf /var/lib/apt/lists/*
 
 ADD https://github.com/mozilla/mozjpeg/archive/v$VERSION.tar.gz /usr/local/share
@@ -33,7 +34,7 @@ RUN apt-get update && \
 COPY --from=mozjpeg /usr/local/share/mozjpeg/build /usr/local/share/mozjpeg/build
 RUN ln -s /usr/local/share/mozjpeg/build/cjpeg /usr/local/bin/mozjpeg
 
-RUN pip install --no-cache-dir thumbor-plugins tc_mongodb tc_aws
+RUN pip install --no-cache-dir thumbor-plugins tc_mongodb tc_aws CairoSVG==1.0.22
 
 ENV OPTIMIZERS="['thumbor_plugins.optimizers.pngquant', 'thumbor_plugins.optimizers.mozjpeg']"
 
