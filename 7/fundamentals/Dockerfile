@@ -19,7 +19,7 @@ WORKDIR /usr/local/share/mozjpeg/build
 RUN ../configure && make
 
 
-FROM mvhirsch/thumbor:7.0.1
+FROM mvhirsch/thumbor:7.5.2
 
 RUN pip install --user --no-cache-dir thumbor-aws==0.3.1 thumbor-plugins
 
