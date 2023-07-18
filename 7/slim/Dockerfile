@@ -21,7 +21,7 @@ RUN apt-get update \
         # extensions
         libjpeg-progs gifsicle \
     && ln -s /usr/lib/x86_64-linux-gnu/libboost_python39.so /usr/local/lib/libboost_python310.so \
-    && pip install --user --no-cache-dir cairosvg pycurl py3exiv2 thumbor==7.0.1 envtpl==0.6.0 \
+    && pip install --user --no-cache-dir cairosvg pycurl py3exiv2 thumbor==7.5.2 envtpl==0.7.2 \
     && apt-get autoremove --yes gcc g++ libffi-dev python3-dev python3-all-dev libcurl4-openssl-dev libgnutls28-dev libexiv2-dev \
     && rm -rf /var/lib/apt/lists/* \
     && chown -R thumbor:thumbor /usr/local/thumbor
