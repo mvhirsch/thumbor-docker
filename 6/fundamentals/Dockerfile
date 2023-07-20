@@ -21,7 +21,7 @@ RUN ../configure && make
 
 # thumbor-fundamentals
 FROM mvhirsch/thumbor:slim
-MAINTAINER Michael Hirschler <michael.vhirsch@gmail.com>
+MAINTAINER Michael Hirschler <michael@hirschler.me>
 
 USER root
 

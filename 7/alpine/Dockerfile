@@ -1,5 +1,5 @@
 FROM python:3.10-alpine
-MAINTAINER Michael Hirschler <michael.vhirsch@gmail.com>
+MAINTAINER Michael Hirschler <michael@hirschler.me>
 
 RUN apk add --update --no-cache \
         cairo \

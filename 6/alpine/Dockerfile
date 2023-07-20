@@ -1,5 +1,5 @@
 FROM alpine:3.8
-MAINTAINER Michael Hirschler <michael.vhirsch@gmail.com>
+MAINTAINER Michael Hirschler <michael@hirschler.me>
 RUN apk add --no-cache --virtual .build-deps \
         cairo-dev \
         curl-dev \

@@ -1,5 +1,5 @@
 FROM python:3.10-slim
-MAINTAINER Michael Hirschler <michael.vhirsch@gmail.com>
+MAINTAINER Michael Hirschler <michael@hirschler.me>
 
 RUN groupadd --gid 1000 thumbor \
     && useradd --uid 1000 --gid thumbor --shell /bin/sh thumbor
