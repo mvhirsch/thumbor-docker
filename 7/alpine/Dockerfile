@@ -4,6 +4,7 @@ MAINTAINER Michael Hirschler <michael@hirschler.me>
 RUN apk add --update --no-cache \
         cairo \
         exiftool \
+        ffmpeg \
         gifsicle \
         openjpeg-tools \
         imagemagick \
@@ -25,7 +26,6 @@ RUN apk add --update --no-cache --virtual .build-deps \
       gstreamer-dev \
       harfbuzz-dev \
       hdf5-dev \
-      lapack-dev \
       libdc1394-dev \
       libgphoto2-dev \
       libtbb-dev \
@@ -36,7 +36,7 @@ RUN apk add --update --no-cache --virtual .build-deps \
       qt5-qtbase-dev \
       vtk-dev \
       cmake \
-    	samurai \
+      samurai \
       python3-dev \
       cairo-dev \
       curl-dev \
@@ -44,7 +44,6 @@ RUN apk add --update --no-cache --virtual .build-deps \
       g++ \
       libjpeg-turbo-dev \
       libffi-dev \
-      libressl-dev \
       libwebp-dev \
       python3-dev \
       tiff-dev \
