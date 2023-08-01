@@ -49,7 +49,7 @@ RUN apk add --update --no-cache --virtual .build-deps \
       tiff-dev \
       zlib-dev \
     && pip install --no-cache numpy \
-    && pip install --no-cache-dir thumbor==7.5.2 envtpl==0.7.2 \
+    && pip install --no-cache-dir thumbor[all]==7.5.2 envtpl==0.7.2 \
     && apk del .build-deps \
     && rm -rf /var/cache/apk/* \
     && rm -rf /root/.cache
