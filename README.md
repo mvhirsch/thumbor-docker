@@ -59,6 +59,10 @@ The defacto image. This is build upon `python:3-slim`.
 
 An alpine version for smaller image size.
 
+### `mvhirsch/thumbor:7-bullseyes`
+
+This version of thumbor has all dependencies, supports gifv and opencv
+
 ### `mvhirsch/thumbor-fundamentals:7-slim`
 
 I love the word "fundamentals" in here.
