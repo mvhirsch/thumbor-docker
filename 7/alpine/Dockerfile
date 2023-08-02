@@ -14,6 +14,7 @@ RUN apk add --update --no-cache \
         tiff \
         zlib \
         libc-dev binutils \
+		ffmpeg \
       && rm -rf /var/cache/apk/*
 
 RUN apk add --update --no-cache --virtual .build-deps \
