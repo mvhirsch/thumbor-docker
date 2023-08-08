@@ -66,7 +66,7 @@ foreach ($images_filters as $filter) { ?>
 
 		?>
 			<td>
-				<img src="https://blog.alice.com.br/t/unsafe/<?php echo $size; ?>/<?php echo $filter; ?>/<?php echo $image; ?>" />
+				<img src="http://localhost:8888/unsafe/<?php echo $size; ?>/<?php echo $filter; ?>/<?php echo $image; ?>" />
 			</td>
 		<?php }
 		?>
