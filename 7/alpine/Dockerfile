@@ -1,4 +1,4 @@
-FROM python:3.10-alpine
+FROM python:3.10.6-alpine
 MAINTAINER Michael Hirschler <michael@hirschler.me>
 
 RUN apk add --update --no-cache \
@@ -14,6 +14,7 @@ RUN apk add --update --no-cache \
         tiff \
         zlib \
         libc-dev binutils \
+        ffmpeg \
       && rm -rf /var/cache/apk/*
 
 RUN apk add --update --no-cache --virtual .build-deps \
@@ -36,7 +37,7 @@ RUN apk add --update --no-cache --virtual .build-deps \
       qt5-qtbase-dev \
       vtk-dev \
       cmake \
-    	samurai \
+      samurai \
       python3-dev \
       cairo-dev \
       curl-dev \
